@@ -1,0 +1,144 @@
+---
+title: "Basic Observable within Quarto from Tidyverse"
+author: "John Little"
+date: "`r Sys.Date()`"
+format: html
+---
+
+Scope note: Document very basic data wrangling code for observable js {ojs}. The assumption is that I know {tidyverse} code pretty well. Now I want to extend that knowledge so that i can, eventually, write reactive code and generate interactive observable documents.
+
+To start a Quarto ojs document
+
+1.  File \> New file \> Quarto document....
+2.  Choose *interactive* (left-hand sidebar) \> *Observable js* (radio button)
+3.  write code (see examples below)
+4.  Click the render button
+5.  IMPORTANT: to view, from the *Viewer* tab (in RStudio), click the *Show in new window* button
+
+## Converting from r code
+
+Make a Tidyverse tibble into an Arquero data frame
+
+1.  `ojs_define()` is an {r} function
+2.  `transpose()` is an {ojs} function
+3.  `aq.from()` is an Arquero function performed in an {ojs} code block
+
+## load tidyverse packages
+
+```{r}
+#| warning: false
+#| message: false
+library(tidyverse)
+```
+
+## load observable functions from d3 and aqquero
+
+```{ojs}
+// import { LineChart }  from "@d3/line-chart"
+// import { LineChart } from "@d3/line-with-tooltip"
+import { LineChart } from "@d3/multi-line-chart"
+import {InlineChart} from "@d3/inline-labels"
+import { ChangeLineChart } from "@d3/change-line-chart"
+import { Scatterplot } from "@d3/scatterplot"  // https://observablehq.com/@d3/scatterplot?collection=@d3/charts
+import { aq, op } from '@uwdata/arquero'
+```
+
+## import and convert tidyverse objects
+
+make it ready for ojs
+
+```{r}
+my_economics_tbl <- ggplot2::economics
+ojs_define(my_economics_tbl_ojs = my_economics_tbl)
+
+my_starwars_tbl <- starwars |> 
+  select(name, mass, height)
+
+ojs_define(my_sw_tbl_ojs = my_starwars_tbl)
+
+```
+
+## transpose tidyverse object THEN convert to Arquero
+
+```{ojs}
+my_aq_eco_from_tbl = aq.from(transpose(my_economics_tbl_ojs))
+
+my_aq_sw_from_tbl = aq.from(transpose(my_sw_tbl_ojs))
+```
+
+## View arquero data frame
+
+```{ojs}
+my_aq_eco_from_tbl.view()
+```
+
+```{ojs}
+my_aq_sw_from_tbl.view()
+```
+
+More on Arquero
+
+-   https://uwdata.github.io/arquero/
+-   https://quarto.org/docs/interactive/ojs/examples/arquero.html
+
+## Viz via d3
+
+```{ojs}
+Scatterplot(my_aq_sw_from_tbl, {
+  x: d => d.height,
+  y: d => d.mass,
+  title: d => d.name,
+  xLabel: "Height in cm →",
+  yLabel: "↑ Mass in kg",
+  stroke: "steelblue",
+  width: 800,
+  height: 600
+})
+```
+
+back to dplyr to wrangle. but could use arquero
+
+```{r}
+my_sw <- starwars |> 
+  filter(mass < 500) |> 
+  select(name, mass, height)
+
+ojs_define(no_jabb_tbl = my_sw)
+```
+
+```{ojs}
+// my_aq_eco_from_tbl = aq.from(transpose(my_economics_tbl_ojs))
+sw_no_jabba_aq = aq.from(transpose(no_jabb_tbl))
+
+Scatterplot(sw_no_jabba_aq, {
+  x: d => d.height,
+  y: d => d.mass,
+  title: d => d.name,
+  xLabel: "Height in cm →",
+  yLabel: "↑ Mass in kg",
+  stroke: "steelblue",
+  width: 800,
+  height: 600
+})
+```
+
+### regression
+
+`Plot` is an Observable's onboard plotting function
+
+```{ojs}
+Plot.plot({
+  marks: [
+    Plot.dot(sw_no_jabba_aq, {x: "height", y: "mass", strokeOpacity: 0.5, r: 2}),
+    Plot.linearRegressionY(sw_no_jabba_aq, {x: "height", y: "mass", stroke: "steelblue", ci: 0.95})
+  ]
+})
+```
+
+------------------------------------------------------------------------
+
+Next up: basic reactivity
+
+Queued: data wrangling in [arquero](https://uwdata.github.io/arquero/)
+
+cc: BY 4.0

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.179">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="John Little">
+
+<title>03_lineplotradiobutton</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="03_lineplot_with_radiobutton_files/libs/clipboard/clipboard.min.js"></script>
+<script src="03_lineplot_with_radiobutton_files/libs/quarto-html/quarto.js"></script>
+<script src="03_lineplot_with_radiobutton_files/libs/quarto-html/popper.min.js"></script>
+<script src="03_lineplot_with_radiobutton_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="03_lineplot_with_radiobutton_files/libs/quarto-html/anchor.min.js"></script>
+<link href="03_lineplot_with_radiobutton_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="03_lineplot_with_radiobutton_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="03_lineplot_with_radiobutton_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="03_lineplot_with_radiobutton_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="03_lineplot_with_radiobutton_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script type="module" src="03_lineplot_with_radiobutton_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="03_lineplot_with_radiobutton_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">03_lineplotradiobutton</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>John Little </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'my_temp_reg.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>GIS” “Data Management” “Data Science” “Data Visualization” NA</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" data-startfrom="16" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 15;"><span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">// newdata = FileAttachment("data/starsmall_freqtbl.csv").csv({ typed: true})</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">// my_summary_data = FileAttachment("worshops_over_time.csv").csv({ typed: true})</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>newdata <span class="op">=</span> aq<span class="op">.</span><span class="fu">loadCSV</span>(<span class="st">"my_temp_reg.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" data-startfrom="23" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 22;"><span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>my_summary_data <span class="op">=</span> aq<span class="op">.</span><span class="fu">loadCSV</span>(<span class="st">"worshops_over_time.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<section id="full-registration-data-for-some-recent-years" class="level4">
+<h4 class="anchored" data-anchor-id="full-registration-data-for-some-recent-years">full registration data (for some recent years)</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" data-startfrom="29" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 28;"><span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co">//aq.table(ojs_peng)</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>newdata<span class="op">.</span><span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</section>
+<section id="summarized-above-via-dplyr" class="level4">
+<h4 class="anchored" data-anchor-id="summarized-above-via-dplyr">summarized above via dplyr</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" data-startfrom="37" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 36;"><span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>my_summary_data<span class="op">.</span><span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" data-startfrom="44" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 43;"><span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>viewof theme_selected <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(  </span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"GIS"</span><span class="op">,</span> <span class="st">"Data Management"</span><span class="op">,</span> <span class="st">"Data Science"</span><span class="op">,</span> <span class="st">"Data Visualization"</span>]<span class="op">,</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">label</span><span class="op">:</span> <span class="st">"Theme:"</span> }</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>theme_selected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" data-startfrom="54" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 53;"><span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>newdata</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">params</span>({</span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>   <span class="dt">i</span><span class="op">:</span> theme_selected</span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">filter</span>((d<span class="op">,</span> $) <span class="kw">=&gt;</span> op<span class="op">.</span><span class="fu">includes</span>($<span class="op">.</span><span class="at">i</span><span class="op">,</span> d<span class="op">.</span><span class="at">theme</span>) )</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-6" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" data-startfrom="64" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 63;"><span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a>newdata</span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">groupby</span>(<span class="st">'workshop_date'</span><span class="op">,</span> <span class="st">'theme'</span>)</span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>  <span class="co">// .filter(d =&gt; d.body_mass_g &gt; 0)</span></span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">rollup</span>({</span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>    <span class="dt">count</span><span class="op">:</span> op<span class="op">.</span><span class="fu">count</span>()<span class="op">,</span></span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>   })</span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-7" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" data-startfrom="76" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 75;"><span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>df_theme <span class="op">=</span> newdata</span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">groupby</span>(<span class="st">'workshop_date'</span><span class="op">,</span> <span class="st">'theme'</span>)</span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a>  <span class="co">// .filter(d =&gt; d.body_mass_g &gt; 0)</span></span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">rollup</span>({</span>
+<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a>    <span class="dt">count</span><span class="op">:</span> op<span class="op">.</span><span class="fu">count</span>()<span class="op">,</span></span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a>   })</span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a>df_theme</span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<p>LineChart(df_theme, { x: d =&gt; d.workshop_date, y: d =&gt; d.count, z: d =&gt; d.theme, yLabel: “Number of Registrants”, width: 800, height: 400 })</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" data-startfrom="97" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 96;"><span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a><span class="fu">InlineChart</span>(df_theme<span class="op">,</span> {</span>
+<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">workshop_date</span><span class="op">,</span></span>
+<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">count</span><span class="op">,</span></span>
+<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a>  <span class="dt">z</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">theme</span><span class="op">,</span></span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a>  width<span class="op">,</span></span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">500</span></span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-9" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<p>chart = InlineChart(sales, { x: d =&gt; d.date, y: d =&gt; d.sales, z: d =&gt; d.fruit, width, height: 500 })</p>
+</section>
+<section id="dark-orange" class="level2">
+<h2 class="anchored" data-anchor-id="dark-orange">Dark Orange</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" data-startfrom="117" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 116;"><span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a><span class="co">//chart = LineChart(my_summary_data, {</span></span>
+<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a><span class="fu">LineChart</span>(my_summary_data<span class="op">,</span> {</span>
+<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">workshop_date</span><span class="op">,</span></span>
+<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">n</span><span class="op">,</span></span>
+<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a>  <span class="dt">yLabel</span><span class="op">:</span> <span class="st">"Number of Registrants"</span><span class="op">,</span></span>
+<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">400</span><span class="op">,</span></span>
+<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> <span class="st">"darkorange"</span></span>
+<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-10" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<hr>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" data-startfrom="131" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 130;"><span id="cb12-131"><a href="#cb12-131" aria-hidden="true" tabindex="-1"></a><span class="co">// 'workshop_name', 'workshop_id', 'workshop_date'</span></span>
+<span id="cb12-132"><a href="#cb12-132" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(newdata<span class="op">,</span> {<span class="dt">sort</span><span class="op">:</span> <span class="st">'workshop_date'</span><span class="op">,</span> <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">rows</span><span class="op">:</span> <span class="dv">7</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-11" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" data-startfrom="138" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 137;"><span id="cb13-138"><a href="#cb13-138" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb13-139"><a href="#cb13-139" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb13-140"><a href="#cb13-140" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(year_filter<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">'workshop_date'</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">'n'</span>})</span>
+<span id="cb13-141"><a href="#cb13-141" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb13-142"><a href="#cb13-142" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-12" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14" data-startfrom="147" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 146;"><span id="cb14-147"><a href="#cb14-147" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> <span class="fu">LineChart</span>(year_filter<span class="op">,</span> {</span>
+<span id="cb14-148"><a href="#cb14-148" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">workshop_date</span><span class="op">,</span></span>
+<span id="cb14-149"><a href="#cb14-149" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">n</span><span class="op">,</span></span>
+<span id="cb14-150"><a href="#cb14-150" aria-hidden="true" tabindex="-1"></a>  <span class="dt">yLabel</span><span class="op">:</span> <span class="st">"Number of Registrants"</span><span class="op">,</span></span>
+<span id="cb14-151"><a href="#cb14-151" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb14-152"><a href="#cb14-152" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">400</span><span class="op">,</span></span>
+<span id="cb14-153"><a href="#cb14-153" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> <span class="st">"darkorange"</span></span>
+<span id="cb14-154"><a href="#cb14-154" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-13" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" data-startfrom="158" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 157;"><span id="cb15-158"><a href="#cb15-158" aria-hidden="true" tabindex="-1"></a>chartinline <span class="op">=</span> <span class="fu">InlineChart</span>(year_filter<span class="op">,</span> {</span>
+<span id="cb15-159"><a href="#cb15-159" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">workshop_date</span><span class="op">,</span></span>
+<span id="cb15-160"><a href="#cb15-160" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">n</span><span class="op">,</span></span>
+<span id="cb15-161"><a href="#cb15-161" aria-hidden="true" tabindex="-1"></a><span class="co">//  z: d =&gt; d.fruit,</span></span>
+<span id="cb15-162"><a href="#cb15-162" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb15-163"><a href="#cb15-163" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">500</span></span>
+<span id="cb15-164"><a href="#cb15-164" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-14" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<p>delme</p>
+<div class="quarto-ojs-syntax-error">
+<div class="sourceCode" id="cb16" data-startfrom="169" data-syntax-error-position="42" data-source-offset="9"><pre class="sourceCode numberSource numberLines java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 168;"><span id="cb16-169"><a href="#cb16-169"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
+<span id="cb16-170"><a href="#cb16-170"></a>percent_chart <span class="op">=</span> <span class="fu">ChangeLineChart</span><span class="op">(</span>year_filte<span class="op">;</span>r<span class="op">,</span> <span class="op">{</span></span>
+<span id="cb16-171"><a href="#cb16-171"></a>  x<span class="op">:</span> d <span class="op">=&gt;</span> d<span class="op">.</span><span class="fu">workshop_date</span><span class="op">,</span></span>
+<span id="cb16-172"><a href="#cb16-172"></a>  y<span class="op">:</span> d <span class="op">=&gt;</span> d<span class="op">.</span><span class="fu">n</span><span class="op">,</span></span>
+<span id="cb16-173"><a href="#cb16-173"></a>  <span class="co">// basis, // e.g., 93.24 (omit for the first y-value)</span></span>
+<span id="cb16-174"><a href="#cb16-174"></a>  yLabel<span class="op">:</span> <span class="st">"↑ Change in attendance (%)"</span><span class="op">,</span></span>
+<span id="cb16-175"><a href="#cb16-175"></a>  width<span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb16-176"><a href="#cb16-176"></a>  height<span class="op">:</span> <span class="dv">500</span><span class="op">,</span></span>
+<span id="cb16-177"><a href="#cb16-177"></a>  color<span class="op">:</span> <span class="st">"steelblue"</span></span>
+<span id="cb16-178"><a href="#cb16-178"></a><span class="op">})</span></span>
+<span id="cb16-179"><a href="#cb16-179"></a>```</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+OJS Syntax Error (line 170, column 43)Unexpected token
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+</div>
+<hr>
+<pre><code>{ojs}
+// viewof search = Inputs.search(newdata)
+// Inputs.table(search)
+viewof year_df = Inputs.checkbox(["salty", "sweet", "bitter", "sour", "umami"], {label: "Flavors"})
+
+viewof r = Inputs.radio(
+  ["Lust", "Gluttony", "Greed", "Sloth", "Wrath", "Envy", "Pride"]
+  )
+  
+viewof color = Inputs.radio(["red", "green", "blue"], {label: "color"})
+
+viewof dd1 = Inputs.select({
+  title: "Stooges",
+  description: "Please pick your favorite stooge.",
+  options: ["Curly", "Larry", "Moe", "Shemp"],
+  value: "Moe"
+})
+
+r
+
+color
+
+dd1</code></pre>
+<hr>
+<p>https://observablehq.com/<span class="citation" data-cites="d3/line-chart">@d3/line-chart</span> https://observablehq.com/<span class="citation" data-cites="d3/inline-labels?collection">@d3/inline-labels?collection</span>=<span class="citation" data-cites="d3/charts">@d3/charts</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18" data-startfrom="218" data-source-offset="-47"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 217;"><span id="cb18-218"><a href="#cb18-218" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { LineChart } <span class="im">from</span> <span class="st">"@d3/line-with-tooltip"</span></span>
+<span id="cb18-219"><a href="#cb18-219" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {InlineChart} <span class="im">from</span> <span class="st">"@d3/inline-labels"</span></span>
+<span id="cb18-220"><a href="#cb18-220" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { ChangeLineChart } <span class="im">from</span> <span class="st">"@d3/change-line-chart"</span></span>
+<span id="cb18-221"><a href="#cb18-221" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { aq<span class="op">,</span> op } <span class="im">from</span> <span class="st">'@uwdata/arquero'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-16-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-16-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-16-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-16-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+
+<script type="ojs-module-contents">
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"// newdata = FileAttachment(\"data/starsmall_freqtbl.csv\").csv({ typed: true})\n// my_summary_data = FileAttachment(\"worshops_over_time.csv\").csv({ typed: true})\nnewdata = aq.loadCSV(\"my_temp_reg.csv\")\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"my_summary_data = aq.loadCSV(\"worshops_over_time.csv\")\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"//aq.table(ojs_peng)\n\nnewdata.view()\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"my_summary_data.view()\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"viewof theme_selected = Inputs.select(  \n  [\"GIS\", \"Data Management\", \"Data Science\", \"Data Visualization\"],\n  { label: \"Theme:\" }\n  )\n  \ntheme_selected\n\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"newdata\n  .params({\n   i: theme_selected\n  })\n  .filter((d, $) => op.includes($.i, d.theme) )\n  .view()\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"newdata\n  .groupby('workshop_date', 'theme')\n  // .filter(d => d.body_mass_g > 0)\n  .rollup({\n    count: op.count(),\n   })\n  .view()\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"df_theme = newdata\n  .groupby('workshop_date', 'theme')\n  // .filter(d => d.body_mass_g > 0)\n  .rollup({\n    count: op.count(),\n   })\n   \ndf_theme\n  .view()\n"},{"methodName":"interpret","cellName":"ojs-cell-9","inline":false,"source":"InlineChart(df_theme, {\n  x: d => d.workshop_date,\n  y: d => d.count,\n  z: d => d.theme,\n  width,\n  height: 500\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-10","inline":false,"source":"//chart = LineChart(my_summary_data, {\nLineChart(my_summary_data, {\n  x: d => d.workshop_date,\n  y: d => d.n,\n  yLabel: \"Number of Registrants\",\n  width: 800,\n  height: 400,\n  color: \"darkorange\"\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-11","inline":false,"source":"// 'workshop_name', 'workshop_id', 'workshop_date'\nInputs.table(newdata, {sort: 'workshop_date', reverse: true, rows: 7})\n"},{"methodName":"interpret","cellName":"ojs-cell-12","inline":false,"source":"Plot.plot({\n  marks: [\n    Plot.line(year_filter, {x: 'workshop_date', y: 'n'})\n]\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-13","inline":false,"source":"chart = LineChart(year_filter, {\n  x: d => d.workshop_date,\n  y: d => d.n,\n  yLabel: \"Number of Registrants\",\n  width: 800,\n  height: 400,\n  color: \"darkorange\"\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-14","inline":false,"source":"chartinline = InlineChart(year_filter, {\n  x: d => d.workshop_date,\n  y: d => d.n,\n//  z: d => d.fruit,\n  width: 800,\n  height: 500\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-16","inline":false,"source":"// import { LineChart }  from \"@d3/line-chart\"\nimport { LineChart } from \"@d3/line-with-tooltip\"\nimport {InlineChart} from \"@d3/inline-labels\"\nimport { ChangeLineChart } from \"@d3/change-line-chart\"\nimport { aq, op } from '@uwdata/arquero'\n"},{"methodName":"interpretQuiet","source":"shinyInput('theme_selected')"}]}
+</script>
+<script type="module">
+window._ojs.paths.runtimeToDoc = "../../..";
+window._ojs.paths.runtimeToRoot = "../../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

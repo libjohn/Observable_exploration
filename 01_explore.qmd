@@ -1,0 +1,164 @@
+---
+title: "observable exploration CDVS workshop stats"
+author: "John Little"
+format: html
+---
+
+```{r}
+#| echo: true
+#| warning: false
+#| message: false
+
+library(tidyverse)
+```
+
+
+```{r}
+
+mydf <- read_csv("my_temp_reg.csv")
+mydf 
+  
+
+glimpse(mydf)
+```
+
+
+## Observable JS
+
+### first looks at data frame
+
+```{ojs}
+Inputs.table(cdvs_workshops_df)
+```
+
+```{ojs}
+SummaryTable(cdvs_workshops_df)
+
+```
+
+```{ojs}
+cdvs_workshops_df.columns
+```
+
+
+```
+{ojs}
+// Table(cdvs_workshops_df)
+
+// table(cdvs_workshops_df)
+```
+
+
+```{ojs}
+Inputs.table(cdvs_workshops_df
+    .select('workshop_name', 'workshop_id', 'workshop_date')
+    .orderby('workshop_name'))  
+    
+//  .view({ height: 400 });
+  
+//.derive({
+//    month: d => op.row_number(),
+//    diff:  d => d.Seattle - d.Chicago
+//  })
+
+//  Table(cdvs_workshops_df.objects())
+```
+
+
+
+## packages and import
+
+```{ojs}
+// cdvs_workshops_df = await aq.loadCSV("my_temp_reg.csv")
+
+cdvs_workshops_df = await aq.loadCSV("my_temp_reg.csv")
+
+```
+
+```{ojs}
+import { all, desc, op, table } from 'arquero';
+import { SummaryTable} from "@observablehq/summary-table"
+```
+
+
+
+```
+{ojs}
+// Average hours of sunshine per month, from https://usclimatedata.com/.
+dt = table({
+  'Seattle': [69, 108, 178, 207, 253, 268, 312, 281, 221, 142, 72, 52],
+  'Chicago': [135, 136, 187, 215, 281, 311, 318, 283, 226, 193, 113, 106],
+  'San Francisco': [165, 182, 251, 281, 314, 330, 300, 272, 267, 243, 189, 156]
+});
+
+// Sorted differences between Seattle and Chicago.
+// Table expressions use arrow function syntax.
+dt.derive({
+    month: d => op.row_number(),
+    diff:  d => d.Seattle - d.Chicago
+  })
+  .select('month', 'diff')
+  .orderby(desc('diff'))
+  .print();
+
+// Is Seattle more correlated with San Francisco or Chicago?
+// Operations accept column name strings outside a function context.
+dt.rollup({
+    corr_sf:  op.corr('Seattle', 'San Francisco'),
+    corr_chi: op.corr('Seattle', 'Chicago')
+  })
+  .print();
+
+// Aggregate statistics per city, as output objects.
+// Reshape (fold) the data to a two column layout: city, sun.
+dt.fold(all(), { as: ['city', 'sun'] })
+  .groupby('city')
+  .rollup({
+    min:  d => op.min(d.sun), // functional form of op.min('sun')
+    max:  d => op.max(d.sun),
+    avg:  d => op.average(d.sun),
+    med:  d => op.median(d.sun),
+    // functional forms permit flexible table expressions
+    skew: ({sun: s}) => (op.mean(s) - op.median(s)) / op.stdev(s) || 0
+  })
+  .objects()
+
+```
+
+```{ojs}
+viewof file = html`<input type=file accept="image/*">`
+```
+
+
+```{ojs}
+// newdata = FileAttachment("data/starsmall_freqtbl.csv").csv({ typed: true})
+newdata = FileAttachment("my_temp_reg.csv").csv({ typed: true})
+```
+
+```{ojs}
+newdata.columns
+
+```
+
+```{ojs}
+// 'workshop_name', 'workshop_id', 'workshop_date'
+Inputs.table(newdata, {sort: 'workshop_date', reverse: true, rows: 7})
+```
+
+```{ojs}
+viewof search = Inputs.search(newdata)
+```
+
+```{ojs}
+Inputs.table(search)
+```
+
+
+```{ojs}
+Plot.plot({
+  marks: [
+    Plot.line(search, {x: 'workshop_date', y: 'count'})
+]
+})
+```
+
