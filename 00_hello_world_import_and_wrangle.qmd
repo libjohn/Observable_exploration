@@ -21,7 +21,7 @@ Make a Tidyverse tibble into an Arquero data frame
 
 1.  `ojs_define()` is an {r} function
 2.  `transpose()` is an {ojs} function
-3.  `aq.from()` is an Arquero function performed in an {ojs} code block
+3.  `aq.from()` is an [Arquero](https://uwdata.github.io/arquero/) function performed in an {ojs} code block
 
 ## load tidyverse packages
 
@@ -96,7 +96,7 @@ Scatterplot(my_aq_sw_from_tbl, {
 })
 ```
 
-back to dplyr to wrangle. but could use arquero
+back to dplyr to wrangle.
 
 ```{r}
 my_sw <- starwars |> 
@@ -105,6 +105,8 @@ my_sw <- starwars |>
 
 ojs_define(no_jabb_tbl = my_sw)
 ```
+
+## and d3 viz (`Scatterplot`)
 
 ```{ojs}
 // my_aq_eco_from_tbl = aq.from(transpose(my_economics_tbl_ojs))
@@ -116,9 +118,28 @@ Scatterplot(sw_no_jabba_aq, {
   title: d => d.name,
   xLabel: "Height in cm →",
   yLabel: "↑ Mass in kg",
-  stroke: "steelblue",
+  stroke: "darkorange",
   width: 800,
   height: 600
+})
+```
+
+but could use arquero
+
+`.filter(d => d.mass < 500)`
+
+```{ojs}
+
+Scatterplot(my_aq_sw_from_tbl
+  .filter(d => d.mass < 500), {
+    x: d => d.height,
+    y: d => d.mass,
+    title: d => d.name,
+    xLabel: "Height in cm →",
+    yLabel: "↑ Mass in kg",
+    stroke: "forestgreen",
+    width: 800,
+    height: 600
 })
 ```
 
