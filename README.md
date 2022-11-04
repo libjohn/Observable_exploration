@@ -13,7 +13,7 @@ Assumption: reader knows [tidyverse](https://tidyverse.org)
 
 ## Recomend
 
-1.  clone the [observable_exploration
+1.  clone into RStudio project the [observable_exploration
     repo](https://github.com/libjohn/Observable_exploration#readme):
     <https://github.com/libjohn/Observable_exploration.git>
 2.  dbl-click the Observable_exploration.Rproj file
