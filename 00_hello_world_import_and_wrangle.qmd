@@ -5,23 +5,25 @@ date: "`r Sys.Date()`"
 format: html
 ---
 
-Scope note: Document very basic data wrangling code for observable js {ojs}. The assumption is that I know {tidyverse} code pretty well. Now I want to extend that knowledge so that i can, eventually, write reactive code and generate interactive observable documents.
+Scope note: Document basic data wrangling for observable js {ojs}.\
+Assumption: know {tidyverse}.\
+Goal: Extend *tidyverse* knowledge to, eventually, write reactive code and generate interactive observable documents.
 
 To start a Quarto ojs document
 
-1.  File \> New file \> Quarto document....
+1.  File \> New file \> Quarto document...
 2.  Choose *interactive* (left-hand sidebar) \> *Observable js* (radio button)
-3.  write code (see examples below)
+3.  Write code (see examples below)
 4.  Click the render button
 5.  IMPORTANT: to view, from the *Viewer* tab (in RStudio), click the *Show in new window* button
 
 ## Converting from r code
 
-Make a Tidyverse tibble into an Arquero data frame
+Make a Tidyverse tibble into an [Arquero](https://uwdata.github.io/arquero/) data frame
 
 1.  `ojs_define()` is an {r} function
 2.  `transpose()` is an {ojs} function
-3.  `aq.from()` is an [Arquero](https://uwdata.github.io/arquero/) function performed in an {ojs} code block
+3.  `aq.from()` is an *Arquero* function performed in an {ojs} code block
 
 ## load tidyverse packages
 
@@ -31,7 +33,7 @@ Make a Tidyverse tibble into an Arquero data frame
 library(tidyverse)
 ```
 
-## load observable functions from d3 and aqquero
+## load observable functions from d3 and arquero
 
 ```{ojs}
 // import { LineChart }  from "@d3/line-chart"
@@ -42,6 +44,13 @@ import { ChangeLineChart } from "@d3/change-line-chart"
 import { Scatterplot } from "@d3/scatterplot"  // https://observablehq.com/@d3/scatterplot?collection=@d3/charts
 import { aq, op } from '@uwdata/arquero'
 ```
+
+In theory, can't I load the arquero library? But this didn't work. Using the import method, above.
+
+an alternative to importing this is to use \`require\`, e.g.
+
+    # {ojs}
+    aq  
 
 ## import and convert tidyverse objects
 
@@ -137,7 +146,7 @@ Scatterplot(my_aq_sw_from_tbl
     title: d => d.name,
     xLabel: "Height in cm →",
     yLabel: "↑ Mass in kg",
-    stroke: "forestgreen",
+    fill: "forestgreen",
     width: 800,
     height: 600
 })
@@ -150,8 +159,14 @@ Scatterplot(my_aq_sw_from_tbl
 ```{ojs}
 Plot.plot({
   marks: [
-    Plot.dot(sw_no_jabba_aq, {x: "height", y: "mass", strokeOpacity: 0.5, r: 2}),
-    Plot.linearRegressionY(sw_no_jabba_aq, {x: "height", y: "mass", stroke: "steelblue", ci: 0.95})
+    Plot.dot(sw_no_jabba_aq, {
+      x: "height", y: "mass", 
+      strokeOpacity: 0.5, r: 2}),
+    Plot.linearRegressionY(sw_no_jabba_aq, {
+      x: "height", 
+      y: "mass", 
+      stroke: "steelblue", 
+      ci: 0.95})
   ]
 })
 ```

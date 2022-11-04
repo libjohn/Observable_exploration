@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="John Little">
-<meta name="dcterms.date" content="2022-11-03">
+<meta name="dcterms.date" content="2022-11-04">
 
 <title>Basic Observable within Quarto from Tidyverse</title>
 <style>
@@ -138,7 +138,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 3, 2022</p>
+      <p class="date">November 4, 2022</p>
     </div>
   </div>
     
@@ -147,22 +147,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>Scope note: Document very basic data wrangling code for observable js {ojs}. The assumption is that I know {tidyverse} code pretty well. Now I want to extend that knowledge so that i can, eventually, write reactive code and generate interactive observable documents.</p>
+<p>Scope note: Document basic data wrangling for observable js {ojs}.<br>
+Assumption: know {tidyverse}.<br>
+Goal: Extend <em>tidyverse</em> knowledge to, eventually, write reactive code and generate interactive observable documents.</p>
 <p>To start a Quarto ojs document</p>
 <ol type="1">
-<li>File &gt; New file &gt; Quarto document….</li>
+<li>File &gt; New file &gt; Quarto document…</li>
 <li>Choose <em>interactive</em> (left-hand sidebar) &gt; <em>Observable js</em> (radio button)</li>
-<li>write code (see examples below)</li>
+<li>Write code (see examples below)</li>
 <li>Click the render button</li>
 <li>IMPORTANT: to view, from the <em>Viewer</em> tab (in RStudio), click the <em>Show in new window</em> button</li>
 </ol>
 <section id="converting-from-r-code" class="level2">
 <h2 class="anchored" data-anchor-id="converting-from-r-code">Converting from r code</h2>
-<p>Make a Tidyverse tibble into an Arquero data frame</p>
+<p>Make a Tidyverse tibble into an <a href="https://uwdata.github.io/arquero/">Arquero</a> data frame</p>
 <ol type="1">
 <li><code>ojs_define()</code> is an {r} function</li>
 <li><code>transpose()</code> is an {ojs} function</li>
-<li><code>aq.from()</code> is an <a href="https://uwdata.github.io/arquero/">Arquero</a> function performed in an {ojs} code block</li>
+<li><code>aq.from()</code> is an <em>Arquero</em> function performed in an {ojs} code block</li>
 </ol>
 </section>
 <section id="load-tidyverse-packages" class="level2">
@@ -171,14 +173,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="load-observable-functions-from-d3-and-aqquero" class="level2">
-<h2 class="anchored" data-anchor-id="load-observable-functions-from-d3-and-aqquero">load observable functions from d3 and aqquero</h2>
+<section id="load-observable-functions-from-d3-and-arquero" class="level2">
+<h2 class="anchored" data-anchor-id="load-observable-functions-from-d3-and-arquero">load observable functions from d3 and arquero</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" data-startfrom="39" data-source-offset="-100"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 38;"><span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { LineChart } <span class="im">from</span> <span class="st">"@d3/multi-line-chart"</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {InlineChart} <span class="im">from</span> <span class="st">"@d3/inline-labels"</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { ChangeLineChart } <span class="im">from</span> <span class="st">"@d3/change-line-chart"</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { Scatterplot } <span class="im">from</span> <span class="st">"@d3/scatterplot"</span>  <span class="co">// https://observablehq.com/@d3/scatterplot?collection=@d3/charts</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { aq<span class="op">,</span> op } <span class="im">from</span> <span class="st">'@uwdata/arquero'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2" data-startfrom="41" data-source-offset="-100"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 40;"><span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { LineChart } <span class="im">from</span> <span class="st">"@d3/multi-line-chart"</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {InlineChart} <span class="im">from</span> <span class="st">"@d3/inline-labels"</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { ChangeLineChart } <span class="im">from</span> <span class="st">"@d3/change-line-chart"</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { Scatterplot } <span class="im">from</span> <span class="st">"@d3/scatterplot"</span>  <span class="co">// https://observablehq.com/@d3/scatterplot?collection=@d3/charts</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { aq<span class="op">,</span> op } <span class="im">from</span> <span class="st">'@uwdata/arquero'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -215,26 +217,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
+<p>In theory, can’t I load the arquero library? But this didn’t work. Using the import method, above.</p>
+<p>an alternative to importing this is to use `require`, e.g.</p>
+<pre><code># {ojs}
+aq  </code></pre>
 </section>
 <section id="import-and-convert-tidyverse-objects" class="level2">
 <h2 class="anchored" data-anchor-id="import-and-convert-tidyverse-objects">import and convert tidyverse objects</h2>
 <p>make it ready for ojs</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>my_economics_tbl <span class="ot">&lt;-</span> ggplot2<span class="sc">::</span>economics</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ojs_define</span>(<span class="at">my_economics_tbl_ojs =</span> my_economics_tbl)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>my_starwars_tbl <span class="ot">&lt;-</span> starwars <span class="sc">|&gt;</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, mass, height)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ojs_define</span>(<span class="at">my_sw_tbl_ojs =</span> my_starwars_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>my_economics_tbl <span class="ot">&lt;-</span> ggplot2<span class="sc">::</span>economics</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ojs_define</span>(<span class="at">my_economics_tbl_ojs =</span> my_economics_tbl)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>my_starwars_tbl <span class="ot">&lt;-</span> starwars <span class="sc">|&gt;</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, mass, height)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ojs_define</span>(<span class="at">my_sw_tbl_ojs =</span> my_starwars_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="transpose-tidyverse-object-then-convert-to-arquero" class="level2">
 <h2 class="anchored" data-anchor-id="transpose-tidyverse-object-then-convert-to-arquero">transpose tidyverse object THEN convert to Arquero</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" data-startfrom="64" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 63;"><span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>my_aq_eco_from_tbl <span class="op">=</span> aq<span class="op">.</span><span class="fu">from</span>(<span class="fu">transpose</span>(my_economics_tbl_ojs))</span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>my_aq_sw_from_tbl <span class="op">=</span> aq<span class="op">.</span><span class="fu">from</span>(<span class="fu">transpose</span>(my_sw_tbl_ojs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5" data-startfrom="73" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 72;"><span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>my_aq_eco_from_tbl <span class="op">=</span> aq<span class="op">.</span><span class="fu">from</span>(<span class="fu">transpose</span>(my_economics_tbl_ojs))</span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>my_aq_sw_from_tbl <span class="op">=</span> aq<span class="op">.</span><span class="fu">from</span>(<span class="fu">transpose</span>(my_sw_tbl_ojs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-2-1" data-nodetype="declaration">
@@ -254,7 +260,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="view-arquero-data-frame" class="level2">
 <h2 class="anchored" data-anchor-id="view-arquero-data-frame">View arquero data frame</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" data-startfrom="71" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 70;"><span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>my_aq_eco_from_tbl<span class="op">.</span><span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6" data-startfrom="80" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 79;"><span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>my_aq_eco_from_tbl<span class="op">.</span><span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="expression">
 
@@ -262,7 +268,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" data-startfrom="75" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 74;"><span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>my_aq_sw_from_tbl<span class="op">.</span><span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7" data-startfrom="84" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 83;"><span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>my_aq_sw_from_tbl<span class="op">.</span><span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="expression">
 
@@ -278,16 +284,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="viz-via-d3" class="level2">
 <h2 class="anchored" data-anchor-id="viz-via-d3">Viz via d3</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" data-startfrom="86" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 85;"><span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a><span class="fu">Scatterplot</span>(my_aq_sw_from_tbl<span class="op">,</span> {</span>
-<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">height</span><span class="op">,</span></span>
-<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">mass</span><span class="op">,</span></span>
-<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">name</span><span class="op">,</span></span>
-<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>  <span class="dt">xLabel</span><span class="op">:</span> <span class="st">"Height in cm →"</span><span class="op">,</span></span>
-<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>  <span class="dt">yLabel</span><span class="op">:</span> <span class="st">"↑ Mass in kg"</span><span class="op">,</span></span>
-<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>  <span class="dt">stroke</span><span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span></span>
-<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
-<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">600</span></span>
-<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8" data-startfrom="95" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 94;"><span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a><span class="fu">Scatterplot</span>(my_aq_sw_from_tbl<span class="op">,</span> {</span>
+<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">height</span><span class="op">,</span></span>
+<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">mass</span><span class="op">,</span></span>
+<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">name</span><span class="op">,</span></span>
+<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a>  <span class="dt">xLabel</span><span class="op">:</span> <span class="st">"Height in cm →"</span><span class="op">,</span></span>
+<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a>  <span class="dt">yLabel</span><span class="op">:</span> <span class="st">"↑ Mass in kg"</span><span class="op">,</span></span>
+<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a>  <span class="dt">stroke</span><span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span></span>
+<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">600</span></span>
+<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="expression">
 
@@ -296,28 +302,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>back to dplyr to wrangle.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>my_sw <span class="ot">&lt;-</span> starwars <span class="sc">|&gt;</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(mass <span class="sc">&lt;</span> <span class="dv">500</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, mass, height)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ojs_define</span>(<span class="at">no_jabb_tbl =</span> my_sw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>my_sw <span class="ot">&lt;-</span> starwars <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(mass <span class="sc">&lt;</span> <span class="dv">500</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, mass, height)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ojs_define</span>(<span class="at">no_jabb_tbl =</span> my_sw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="and-d3-viz-scatterplot" class="level2">
 <h2 class="anchored" data-anchor-id="and-d3-viz-scatterplot">and d3 viz (<code>Scatterplot</code>)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9" data-startfrom="113" data-source-offset="-65"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 112;"><span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a>sw_no_jabba_aq <span class="op">=</span> aq<span class="op">.</span><span class="fu">from</span>(<span class="fu">transpose</span>(no_jabb_tbl))</span>
-<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a><span class="fu">Scatterplot</span>(sw_no_jabba_aq<span class="op">,</span> {</span>
-<span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">height</span><span class="op">,</span></span>
-<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">mass</span><span class="op">,</span></span>
-<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">name</span><span class="op">,</span></span>
-<span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a>  <span class="dt">xLabel</span><span class="op">:</span> <span class="st">"Height in cm →"</span><span class="op">,</span></span>
-<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a>  <span class="dt">yLabel</span><span class="op">:</span> <span class="st">"↑ Mass in kg"</span><span class="op">,</span></span>
-<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a>  <span class="dt">stroke</span><span class="op">:</span> <span class="st">"darkorange"</span><span class="op">,</span></span>
-<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
-<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">600</span></span>
-<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10" data-startfrom="122" data-source-offset="-65"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 121;"><span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a>sw_no_jabba_aq <span class="op">=</span> aq<span class="op">.</span><span class="fu">from</span>(<span class="fu">transpose</span>(no_jabb_tbl))</span>
+<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a><span class="fu">Scatterplot</span>(sw_no_jabba_aq<span class="op">,</span> {</span>
+<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">height</span><span class="op">,</span></span>
+<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">mass</span><span class="op">,</span></span>
+<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">name</span><span class="op">,</span></span>
+<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a>  <span class="dt">xLabel</span><span class="op">:</span> <span class="st">"Height in cm →"</span><span class="op">,</span></span>
+<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a>  <span class="dt">yLabel</span><span class="op">:</span> <span class="st">"↑ Mass in kg"</span><span class="op">,</span></span>
+<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a>  <span class="dt">stroke</span><span class="op">:</span> <span class="st">"darkorange"</span><span class="op">,</span></span>
+<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">600</span></span>
+<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-6-1" data-nodetype="declaration">
@@ -336,17 +342,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>but could use arquero</p>
 <p><code>.filter(d =&gt; d.mass &lt; 500)</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10" data-startfrom="131" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 130;"><span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a><span class="fu">Scatterplot</span>(my_aq_sw_from_tbl</span>
-<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">mass</span> <span class="op">&lt;</span> <span class="dv">500</span>)<span class="op">,</span> {</span>
-<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">height</span><span class="op">,</span></span>
-<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">mass</span><span class="op">,</span></span>
-<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a>    <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">name</span><span class="op">,</span></span>
-<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a>    <span class="dt">xLabel</span><span class="op">:</span> <span class="st">"Height in cm →"</span><span class="op">,</span></span>
-<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a>    <span class="dt">yLabel</span><span class="op">:</span> <span class="st">"↑ Mass in kg"</span><span class="op">,</span></span>
-<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a>    <span class="dt">stroke</span><span class="op">:</span> <span class="st">"forestgreen"</span><span class="op">,</span></span>
-<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
-<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a>    <span class="dt">height</span><span class="op">:</span> <span class="dv">600</span></span>
-<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11" data-startfrom="140" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 139;"><span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a><span class="fu">Scatterplot</span>(my_aq_sw_from_tbl</span>
+<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">mass</span> <span class="op">&lt;</span> <span class="dv">500</span>)<span class="op">,</span> {</span>
+<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">height</span><span class="op">,</span></span>
+<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">mass</span><span class="op">,</span></span>
+<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a>    <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">name</span><span class="op">,</span></span>
+<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a>    <span class="dt">xLabel</span><span class="op">:</span> <span class="st">"Height in cm →"</span><span class="op">,</span></span>
+<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a>    <span class="dt">yLabel</span><span class="op">:</span> <span class="st">"↑ Mass in kg"</span><span class="op">,</span></span>
+<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a>    <span class="dt">fill</span><span class="op">:</span> <span class="st">"forestgreen"</span><span class="op">,</span></span>
+<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a>    <span class="dt">height</span><span class="op">:</span> <span class="dv">600</span></span>
+<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="expression">
 
@@ -357,12 +363,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="regression">regression</h3>
 <p><code>Plot</code> is an Observable’s onboard plotting function</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11" data-startfrom="150" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 149;"><span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">dot</span>(sw_no_jabba_aq<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"height"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"mass"</span><span class="op">,</span> <span class="dt">strokeOpacity</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
-<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">linearRegressionY</span>(sw_no_jabba_aq<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"height"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"mass"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span> <span class="dt">ci</span><span class="op">:</span> <span class="fl">0.95</span>})</span>
-<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12" data-startfrom="159" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 158;"><span id="cb12-159"><a href="#cb12-159" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb12-160"><a href="#cb12-160" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb12-161"><a href="#cb12-161" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">dot</span>(sw_no_jabba_aq<span class="op">,</span> {</span>
+<span id="cb12-162"><a href="#cb12-162" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"height"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"mass"</span><span class="op">,</span> </span>
+<span id="cb12-163"><a href="#cb12-163" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeOpacity</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
+<span id="cb12-164"><a href="#cb12-164" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">linearRegressionY</span>(sw_no_jabba_aq<span class="op">,</span> {</span>
+<span id="cb12-165"><a href="#cb12-165" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"height"</span><span class="op">,</span> </span>
+<span id="cb12-166"><a href="#cb12-166" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"mass"</span><span class="op">,</span> </span>
+<span id="cb12-167"><a href="#cb12-167" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span> </span>
+<span id="cb12-168"><a href="#cb12-168" aria-hidden="true" tabindex="-1"></a>      <span class="dt">ci</span><span class="op">:</span> <span class="fl">0.95</span>})</span>
+<span id="cb12-169"><a href="#cb12-169" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb12-170"><a href="#cb12-170" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-8" data-nodetype="expression">
 
@@ -379,7 +391,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </main>
 <!-- /main column -->
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"// import { LineChart }  from \"@d3/line-chart\"\n// import { LineChart } from \"@d3/line-with-tooltip\"\nimport { LineChart } from \"@d3/multi-line-chart\"\nimport {InlineChart} from \"@d3/inline-labels\"\nimport { ChangeLineChart } from \"@d3/change-line-chart\"\nimport { Scatterplot } from \"@d3/scatterplot\"  // https://observablehq.com/@d3/scatterplot?collection=@d3/charts\nimport { aq, op } from '@uwdata/arquero'\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"my_aq_eco_from_tbl = aq.from(transpose(my_economics_tbl_ojs))\n\nmy_aq_sw_from_tbl = aq.from(transpose(my_sw_tbl_ojs))\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"my_aq_eco_from_tbl.view()\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"my_aq_sw_from_tbl.view()\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"Scatterplot(my_aq_sw_from_tbl, {\n  x: d => d.height,\n  y: d => d.mass,\n  title: d => d.name,\n  xLabel: \"Height in cm →\",\n  yLabel: \"↑ Mass in kg\",\n  stroke: \"steelblue\",\n  width: 800,\n  height: 600\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"// my_aq_eco_from_tbl = aq.from(transpose(my_economics_tbl_ojs))\nsw_no_jabba_aq = aq.from(transpose(no_jabb_tbl))\n\nScatterplot(sw_no_jabba_aq, {\n  x: d => d.height,\n  y: d => d.mass,\n  title: d => d.name,\n  xLabel: \"Height in cm →\",\n  yLabel: \"↑ Mass in kg\",\n  stroke: \"darkorange\",\n  width: 800,\n  height: 600\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"\nScatterplot(my_aq_sw_from_tbl\n  .filter(d => d.mass < 500), {\n    x: d => d.height,\n    y: d => d.mass,\n    title: d => d.name,\n    xLabel: \"Height in cm →\",\n    yLabel: \"↑ Mass in kg\",\n    stroke: \"forestgreen\",\n    width: 800,\n    height: 600\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"Plot.plot({\n  marks: [\n    Plot.dot(sw_no_jabba_aq, {x: \"height\", y: \"mass\", strokeOpacity: 0.5, r: 2}),\n    Plot.linearRegressionY(sw_no_jabba_aq, {x: \"height\", y: \"mass\", stroke: \"steelblue\", ci: 0.95})\n  ]\n})\n"}]}
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"// import { LineChart }  from \"@d3/line-chart\"\n// import { LineChart } from \"@d3/line-with-tooltip\"\nimport { LineChart } from \"@d3/multi-line-chart\"\nimport {InlineChart} from \"@d3/inline-labels\"\nimport { ChangeLineChart } from \"@d3/change-line-chart\"\nimport { Scatterplot } from \"@d3/scatterplot\"  // https://observablehq.com/@d3/scatterplot?collection=@d3/charts\nimport { aq, op } from '@uwdata/arquero'\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"my_aq_eco_from_tbl = aq.from(transpose(my_economics_tbl_ojs))\n\nmy_aq_sw_from_tbl = aq.from(transpose(my_sw_tbl_ojs))\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"my_aq_eco_from_tbl.view()\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"my_aq_sw_from_tbl.view()\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"Scatterplot(my_aq_sw_from_tbl, {\n  x: d => d.height,\n  y: d => d.mass,\n  title: d => d.name,\n  xLabel: \"Height in cm →\",\n  yLabel: \"↑ Mass in kg\",\n  stroke: \"steelblue\",\n  width: 800,\n  height: 600\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"// my_aq_eco_from_tbl = aq.from(transpose(my_economics_tbl_ojs))\nsw_no_jabba_aq = aq.from(transpose(no_jabb_tbl))\n\nScatterplot(sw_no_jabba_aq, {\n  x: d => d.height,\n  y: d => d.mass,\n  title: d => d.name,\n  xLabel: \"Height in cm →\",\n  yLabel: \"↑ Mass in kg\",\n  stroke: \"darkorange\",\n  width: 800,\n  height: 600\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"\nScatterplot(my_aq_sw_from_tbl\n  .filter(d => d.mass < 500), {\n    x: d => d.height,\n    y: d => d.mass,\n    title: d => d.name,\n    xLabel: \"Height in cm →\",\n    yLabel: \"↑ Mass in kg\",\n    fill: \"forestgreen\",\n    width: 800,\n    height: 600\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"Plot.plot({\n  marks: [\n    Plot.dot(sw_no_jabba_aq, {\n      x: \"height\", y: \"mass\", \n      strokeOpacity: 0.5, r: 2}),\n    Plot.linearRegressionY(sw_no_jabba_aq, {\n      x: \"height\", \n      y: \"mass\", \n      stroke: \"steelblue\", \n      ci: 0.95})\n  ]\n})\n"}]}
 </script>
 <script type="module">
 window._ojs.paths.runtimeToDoc = "../../..";
