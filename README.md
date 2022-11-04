@@ -16,7 +16,7 @@ Assumption: reader knows [tidyverse](https://tidyverse.org)
 1.  clone into RStudio project the [observable_exploration
     repo](https://github.com/libjohn/Observable_exploration#readme):
     <https://github.com/libjohn/Observable_exploration.git>
-2.  dbl-click the Observable_exploration.Rproj file
+    - Or, download and  dbl-click the Observable_exploration.Rproj file 
 3.  open the `00_hellow_world_import_and_wrangle.qmd` document
 4.  Click the render button
 5.  IMPORTANT: to view, from the Viewer tab (in RStudio), click the Show
